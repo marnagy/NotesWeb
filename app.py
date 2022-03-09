@@ -6,38 +6,28 @@ from flask import (
     render_template,
     request,
     session,
-    abort,
-    _app_ctx_stack,
-    url_for
+    abort
 )
-from flask_cors import CORS
 import os
-from models import Base, UserModel, engine, SessionLocal, db_session
-from sqlalchemy.orm import scoped_session
 
 app = Flask(__name__)
-CORS(app)
-db_session.__setattr__
-app.session = db_session
-Base.metadata.create_all(bind=engine)
-print('DB created')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////temp/test.db'
+from models import db, UserModel
+db.init_app(app)
+
+# ! crashes here
+db.create_all(app) 
 
 logged_in_key = 'logged_in'
 
 # @app.before_first_request
 # def before_first():
 #     try:
-#         db.create_all()
-#         Base.metadata.create_all(bind=engine)
-#     except: # DB already created
-#         pass
+    # except: # DB already created
+    #     pass
 
 @app.get('/')
 def index():
-    return redirect('/login')
-
-@app.get('/login')
-def login():
     if not session.get(logged_in_key):
         return render_template('login.html')
     
@@ -48,7 +38,7 @@ def log_in():
     username = request.form['username']
     password = request.form['password']
 
-    user: Optional[UserModel] = db_session.query(UserModel).filter(UserModel.username == username).first()
+    user: Optional[UserModel] = UserModel.filter_by(username=username).first()
 
     if not user:
         # wrong username
@@ -62,26 +52,7 @@ def log_in():
             #return index()
         else:
             session[logged_in_key] = True
-    return redirect('/login')
-
-@app.get('/register')
-def register_template():
-    return render_template('register.html')
-
-@app.post('/register')
-def register():
-    username = request.form['username']
-    password = request.form['password']
-
-    user: Optional[UserModel] = db_session.query(UserModel).filter(UserModel.username == username).first()
-    if user:
-        flash('Username already exists')
-        return redirect('/register')
-    
-    user = UserModel(username, password)
-    db_session.add(user)
-    db_session.commit()
-    return redirect('/login')
+    return index()
 
 if __name__ == '__main__':
     app.secret_key = os.urandom(12)
