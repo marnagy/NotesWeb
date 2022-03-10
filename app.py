@@ -74,6 +74,13 @@ def log_in():
             session[logged_in_key] = True
     return redirect('/login')
 
+@app.get('/home')
+def home():
+    if not session[logged_in_key]:
+        abort()
+    
+    return render_template('home.html')
+
 @app.get('/register')
 def register_template():
     return render_template('register.html')
