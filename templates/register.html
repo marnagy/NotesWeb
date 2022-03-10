@@ -5,31 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
 </head>
 
 <body>
-    <form action="/login" method="POST">
+    <form action="/register" method="POST">
         <div class="app-title">
-            <h1>Login</h1>
+            <h1>Register</h1>
         </div>
-        <div class="login-form">
+        <div class="register-form">
             <div class="control-group">
-                <input type="text" class="login-field" value="" placeholder="username" name="username">
+                <input type="text" value="" placeholder="username" name="username">
                 <label class="login-field-icon fui-user" for="login-name"></label>
             </div>
             <div class="control-group">
-                <input type="password" class="login-field" value="" placeholder="password" name="password">
+                <input type="password" value="" placeholder="password" name="password">
                 <label class="login-field-icon fui-lock" for="login-pass"></label>
             </div>
-            <input type="submit" value="Log in" class="btn btn-primary btn-large btn-block">
-
+            <button>Submit</button>
         </div>
     </form>
-    <div class="register-a">
-        <h3>Don't have an account yet?</h3>
-        <a href="/register">REGISTER HERE</a>
-    </div>
 </body>
 
 </html>
