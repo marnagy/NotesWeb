@@ -6,25 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <link rel="stylesheet" type="text/css" href="css/register.css">
 </head>
 
 <body>
-    <form action="/register" method="POST">
-        <div class="app-title">
-            <h1>Register</h1>
-        </div>
-        <div class="register-form">
-            <div class="control-group">
-                <input type="text" value="" placeholder="username" name="username">
-                <label class="login-field-icon fui-user" for="login-name"></label>
+    <div id="app" class="flex-container-column-center">
+        <form action="/register" method="POST" class="flex-container-column-center">
+            <div class="app-title">
+                <h1>Register</h1>
             </div>
-            <div class="control-group">
-                <input type="password" value="" placeholder="password" name="password">
-                <label class="login-field-icon fui-lock" for="login-pass"></label>
+            <div class="register-form flex-container-column-center">
+                <div class="flex-container-column-center">
+                    <label for="username">Username</label>
+                    <input type="text"  placeholder="username" name="username">
+                </div>
+                <div class="flex-container-column-center">
+                    <label for="password">Password</label>
+                    <input type="password" value="" placeholder="password" name="password">
+                </div>
+                <button>Submit</button>
             </div>
-            <button>Submit</button>
-        </div>
-    </form>
+        </form>
+    </div>
 </body>
 
 </html>
