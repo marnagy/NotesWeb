@@ -3,8 +3,8 @@ input {
 }
 
 
-.login-form > * {
-    margin: 10px 0;
+.register-form > * {
+    margin: 10px 0
 }
 
 input, label, button {
@@ -19,16 +19,4 @@ button {
     background: linear-gradient(-45deg, red, lightgreen);
     border-radius: 10px;
     padding: 10px 50px;
-}
-
-.register-a > * {
-    font-size: larger;
-}
-
-.register-a {
-    /* background-color: transparent;
-    box-shadow: white 0 2px 10px; */
-    border-radius: 10px;
-    padding: 10px 0;
-    margin-top: 5px;
 }
