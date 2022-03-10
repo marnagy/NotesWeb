@@ -1,0 +1,27 @@
+html, body {
+    background-color: aquamarine;
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app {
+    margin: 50px 20px;
+    background-color: deepskyblue;
+    border-radius: 15px;
+    box-shadow: black 2px 5px 5px;
+    padding: 10px 20px;
+    height: 50%;
+}
+
+.flex-container-column-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -6,31 +6,41 @@ from flask import (
     render_template,
     request,
     session,
-    abort,
-    _app_ctx_stack,
-    url_for
+    send_file,
+    abort
 )
 from flask_cors import CORS
 import os
-from models import Base, UserModel, engine, SessionLocal, db_session
-from sqlalchemy.orm import scoped_session
+from models import Base, UserModel, engine, db_session
 
-app = Flask(__name__)
+app = Flask(__name__,
+    template_folder=os.path.join('static', 'html')
+)
 CORS(app)
 db_session.__setattr__
 app.session = db_session
-Base.metadata.create_all(bind=engine)
+#Base.metadata.create_all(bind=engine)
 print('DB created')
 
 logged_in_key = 'logged_in'
 
-# @app.before_first_request
-# def before_first():
-#     try:
-#         db.create_all()
-#         Base.metadata.create_all(bind=engine)
-#     except: # DB already created
-#         pass
+@app.before_first_request
+def before_first():
+    try:
+        Base.metadata.create_all(bind=engine)
+    except: # DB already created
+        pass
+
+# return static files
+@app.get('/<dir_name>/<file_name>')
+def get_static_file(dir_name: str, file_name: str):
+    if dir_name in ['html', 'css', 'js'] and file_name in os.listdir(os.path.join('static', dir_name)):
+        return send_file(
+            os.path.join(
+                'static', dir_name, file_name
+            )
+        )
+    return abort()
 
 @app.get('/')
 def index():
