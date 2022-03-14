@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="New Note Page">
-    <title>New Note</title>
+    <title>{{ note.title }}</title>
     <link rel="stylesheet" type="text/css" href="/static/css/global.css">
     <link rel="stylesheet" type="text/css" href="/static/css/add_note.css">
 </head>
@@ -17,15 +17,19 @@
             <p><em>New Note</em></p>
             <div class="flex-container-column-center note-title-container">
                 <label for="title"><strong>Title</strong></label>
-                <input type="text" name="title" placeholder="Title" pattern="^[^ ].{1,48}[^ ]$">
+                <input type="text" name="title" placeholder="Title" value="{{ note.title }}" pattern="^[^ ].{1,48}[^ ]$" readonly>
             </div>
             <div class="flex-container-column-center note-body-container">
                 <label for="body"><strong>Note body</strong></label>
-                <textarea name="body" placeholder="Note Body"></textarea>
+                <textarea name="body" placeholder="Note Body" readonly>{{ note.body }}</textarea>
             </div>
-            <button>Submit</button>
+            <button hidden>Save</button>
         </form>
+        <button>Edit</button>
+        <button class="hidden-button" hidden>Cancel</button>
     </div>
+
+    <script type="text/javascript" src="/static/js/show_note.js"></script>
 </body>
 
 </html>
