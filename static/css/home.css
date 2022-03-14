@@ -1,0 +1,37 @@
+ul.notes-container {
+    height: max-content;
+    max-height: 70%;
+    width: 100%;
+    overflow-y: scroll;
+    background-color: mintcream;
+    box-shadow: 0 2px 10px black;
+    border-radius: 10px;
+    /* show all notes - no clue why this works */
+    justify-content: start;
+    /* remove dots */
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.notes-container > li {
+    display: inline-block;
+    background-color: silver;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px black;
+    width: 80%;
+    margin: 5px 10px;
+}
+
+.note-container > h3, .note-container > a {
+    margin: 5px 0;
+}
+
+#app > a {
+    width: 70%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

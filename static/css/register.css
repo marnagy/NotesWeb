@@ -13,6 +13,7 @@ input, label, button {
 
 input {
     border-radius: 10px;
+    width: 100%;
 }
 
 button {
