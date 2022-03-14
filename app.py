@@ -129,6 +129,20 @@ def add_note():
 	db_session.commit()
 	return redirect('/home')
 
+@app.get('/note/<int:note_id>')
+def shot_note(note_id: int):
+	if not logged_in_test(session):
+		return redirect('/login')
+	
+	current_user_id = session[USERMODEL_ID_KEY]
+	note = db_session.query(NoteModel).filter(NoteModel.id == note_id, NoteModel.parent_id == current_user_id).first()
+
+	if note is None:
+		abort(400)
+	
+	print(f'Note body:\n"{note.body}"')
+	return render_template('show_note.html', note=note)
+
 if __name__ == '__main__':
 	app.secret_key = os.urandom(12)
 	app.run('0.0.0.0', 5000, debug=True)
