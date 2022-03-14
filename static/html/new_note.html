@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="New Note Page">
+    <title>New Note</title>
+    <link rel="stylesheet" type="text/css" href="static/css/global.css">
+    <link rel="stylesheet" type="text/css" href="static/css/add_note.css">
+</head>
+
+<body>
+    <div id="app" class="flex-container-column-center">
+        <form method="post" class="flex-container-column-center">
+            <p><em>New Note</em></p>
+            <div class="flex-container-column-center note-title-container">
+                <label for="title"><strong>Title</strong></label>
+                <input type="text" name="title" placeholder="Title" pattern="^[^ ].{1,48}[^ ]$">
+            </div>
+            <div class="flex-container-column-center note-body-container">
+                <label for="body"><strong>Note body</strong></label>
+                <textarea name="body" placeholder="Note Body"></textarea>
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

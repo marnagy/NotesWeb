@@ -1,7 +1,9 @@
 html, body {
-    background-color: aquamarine;
+    background-color: deepskyblue;
     height: 100%;
     width: 100%;
+    overflow: hidden;
+    margin: 0;
 }
 
 body{
@@ -11,17 +13,33 @@ body{
 }
 
 #app {
-    margin: 50px 20px;
-    background-color: deepskyblue;
-    border-radius: 15px;
+    background-color: ivory;
+    border-radius: 10px;
     box-shadow: black 2px 5px 5px;
+    height: 70%;
+    max-height: 70%;
+    width: 70%;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 10px 20px;
-    height: 60%;
+}
+
+button {
+    background: linear-gradient(-45deg, red, lightgreen);
+    border-radius: 10px;
+    padding: 10px 50px;
+    font-size: medium;
 }
 
 .flex-container-column-center{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-container-center{
+    display: flex;
     justify-content: center;
     align-items: center;
 }

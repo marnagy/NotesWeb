@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="css/global.css">
-    <link rel="stylesheet" type="text/css" href="css/register.css">
+    <link rel="stylesheet" type="text/css" href="static/css/global.css">
+    <link rel="stylesheet" type="text/css" href="static/css/register.css">
 </head>
 
 <body>
@@ -19,11 +19,15 @@
             <div class="register-form flex-container-column-center">
                 <div class="flex-container-column-center">
                     <label for="username">Username</label>
-                    <input type="text"  placeholder="username" name="username">
+                    <input type="text"  placeholder="username" name="username" pattern="^[^ ]{5,}$">
+                </div>
+                <div class="flex-container-column-center">
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="Email" name="email">
                 </div>
                 <div class="flex-container-column-center">
                     <label for="password">Password</label>
-                    <input type="password" value="" placeholder="password" name="password">
+                    <input type="password" value="" placeholder="password" name="password" pattern=".{4,}">
                 </div>
                 <button>Submit</button>
             </div>

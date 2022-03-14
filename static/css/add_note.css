@@ -1,0 +1,30 @@
+#app > form{
+    width: 100%;
+    height: 80%;
+}
+
+#app > form > p {
+    font-size: xx-large;
+    margin: 10px 0;
+}
+
+.note-body-container, .note-title-container {
+    width: 100%;
+    max-height: 80%;
+    margin: 10px 0;
+    padding: 0;
+}
+
+.note-body-container > textarea {
+    /* height: 400px; */
+    height: 100px;
+    min-height: 100px;
+    max-height: 500px;
+    width: 80%;
+    min-width: 100px;
+    max-width: 100%;
+    line-break: loose;
+    resize: both;
+    margin: 0;
+    padding: 0;
+}
