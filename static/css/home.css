@@ -30,6 +30,22 @@ a {
     margin: 5px 0;
 }
 
+.note-container {
+    width: 100%;
+}
+
+.note-container > div, .note-container > div > *, .note-container > div > a > button {
+    width: 100%;
+}
+
+/* .note-container > div{
+    max-width: 100%;
+}
+
+.note-container > div > * {
+    width: max-content;
+} */
+
 #app > a {
     width: 70%;
     padding-top: 20px;

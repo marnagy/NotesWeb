@@ -20,9 +20,14 @@
                 <li>
                     <div class="note-container flex-container-column-center">
                         <h3>{{ note.title }}</h3>
-                        <a href="/note/{{ note.id }}" class="flex-container-center">
-                            <button>View</button>
-                        </a>
+                        <div class="flex-container-center">
+                            <a href="/note/{{ note.id }}" class="flex-container-center">
+                                <button>View</button>
+                            </a>
+                            <a href="/note/delete/{{ note.id }}" class="flex-container-center">
+                                <button>Delete</button>
+                            </a>
+                        </div>
                     </div>
                 </li>
                 {% endfor %}
@@ -33,6 +38,6 @@
             </a>
         </div>
 
-        <!-- <script type="text/javascript" src="home.js"></script> -->
+        <script type="text/javascript" src="/static/js/home.js"></script>
     </body>
 </html>

@@ -8,25 +8,33 @@
     <meta name="description" content="New Note Page">
     <title>{{ note.title }}</title>
     <link rel="stylesheet" type="text/css" href="/static/css/global.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/add_note.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/show_note.css">
 </head>
 
 <body>
     <div id="app" class="flex-container-column-center">
+        <a href="/home">Go Home</a>
         <form method="post" class="flex-container-column-center">
             <p><em>New Note</em></p>
             <div class="flex-container-column-center note-title-container">
                 <label for="title"><strong>Title</strong></label>
-                <input type="text" name="title" placeholder="Title" value="{{ note.title }}" pattern="^[^ ].{1,48}[^ ]$" readonly>
+                <h2>{{ note.title }}</h3>
+                <input type="text" name="title" placeholder="Title" value="{{ note.title }}" pattern="^[^ ].{1,48}[^ ]$" hidden>
+                <!-- !!! TEST THIS !!! -->
+                <input class="control-data" type="text" value="{{ note.title }}" readonly hidden>
             </div>
             <div class="flex-container-column-center note-body-container">
                 <label for="body"><strong>Note body</strong></label>
-                <textarea name="body" placeholder="Note Body" readonly>{{ note.body }}</textarea>
+                <!-- !!! TEST THIS !!! -->
+                <p class="multiline-paragraph">{{ note.body }}</p>
+                <textarea name="body" placeholder="Note Body" hidden>{{ note.body }}</textarea>
+                <textarea class="control-data" placeholder="Note Body" readonly hidden>{{ note.body }}</textarea>
             </div>
-            <button hidden>Save</button>
+            <button id="update-button" hidden>Update</button>
         </form>
-        <button>Edit</button>
-        <button class="hidden-button" hidden>Cancel</button>
+        <div class="flex-container-center">
+            <button id="edit-cancel-button">Edit</button>
+        </div>
     </div>
 
     <script type="text/javascript" src="/static/js/show_note.js"></script>
