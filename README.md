@@ -4,8 +4,8 @@
 - [x] Register new user
 - [x] Login user
 - [x] Create new note
-- [ ] Edit existing note
-- [ ] Remove note
+- [x] Edit existing note
+- [x] Remove note
 
 ## Possible development in the future
 - [ ] Email account activation

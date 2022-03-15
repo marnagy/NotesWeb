@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="New Note Page">
+    <title>{{ note.title }}</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/global.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/show_note.css">
+</head>
+
+<body>
+    <div id="app" class="flex-container-column-center">
+        <a href="/home">Go Home</a>
+        <form method="post" class="flex-container-column-center">
+            <p><em>New Note</em></p>
+            <div class="flex-container-column-center note-title-container">
+                <label for="title"><strong>Title</strong></label>
+                <h2>{{ note.title }}</h3>
+                <input type="text" name="title" placeholder="Title" value="{{ note.title }}" pattern="^[^ ].{1,48}[^ ]$" hidden>
+                <!-- !!! TEST THIS !!! -->
+                <input class="control-data" type="text" value="{{ note.title }}" readonly hidden>
+            </div>
+            <div class="flex-container-column-center note-body-container">
+                <label for="body"><strong>Note body</strong></label>
+                <!-- !!! TEST THIS !!! -->
+                <p class="multiline-paragraph">{{ note.body }}</p>
+                <textarea name="body" placeholder="Note Body" hidden>{{ note.body }}</textarea>
+                <textarea class="control-data" placeholder="Note Body" readonly hidden>{{ note.body }}</textarea>
+            </div>
+            <button id="update-button" hidden>Update</button>
+        </form>
+        <div class="flex-container-center">
+            <button id="edit-cancel-button">Edit</button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/static/js/show_note.js"></script>
+</body>
+
+</html>

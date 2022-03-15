@@ -6,6 +6,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session, relationship
 from bcrypt import gensalt, hashpw, checkpw
 import uuid
 from datetime import date, datetime
+from exceptions import InvalidDataException
 
 SQLALCHEMY_DB_URI = open('db_uri.txt', 'r').read()
 
@@ -79,10 +80,33 @@ class NoteModel(Base):
 
 	def __init__(self, title: str, body: str, parent_id: int) -> None:
 		super().__init__()
+		if not NoteModel.validate(title, body):
+			raise InvalidDataException('Note title or note body does not meet required criteria.')
+
 		self.title = title
 		self.body = body
 		self.parent_id = parent_id
 		self.creation = datetime.utcnow()
+
+	@staticmethod
+	def validate(title: str, body: str) -> bool:
+		return (NoteModel.validate_title(title)
+			and NoteModel.validate_body(body))
+
+	@staticmethod
+	def validate_title(title: str) -> bool:
+		return title is not None and 3 < len(title.strip()) < 50
+	
+	@staticmethod
+	def validate_body(body: str) -> bool:
+		return body is not None
+	
+	def update(self, new_title: str, new_body: str) -> None:
+		if not NoteModel.validate(new_title, new_body):
+			raise InvalidDataException('New Note Title or New Note Nody does not meet required criteria.')
+		
+		self.title = new_title
+		self.body = new_body
 
 	def to_json(self) -> dict[str, Any]:
 		return {
