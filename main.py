@@ -15,7 +15,7 @@ import os
 from models import Base, NoteModel, UserModel, engine, db_session
 
 app = Flask(__name__,
-	template_folder=os.path.join(os.getcwd(), 'static', 'html')
+	template_folder=os.path.join('.', 'static', 'html')
 )
 CORS(app)
 app.session = db_session
