@@ -48,6 +48,10 @@ def get_static_file(dir_name: str, file_name: str):
 		)
 	return abort(400)
 
+@app.get('/test')
+def text_endpoint():
+	return { 'Hello': 'world!' }
+
 @app.get('/')
 def index():
 	return redirect('/login')
