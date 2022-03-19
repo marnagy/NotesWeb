@@ -1,22 +1,15 @@
 from typing import Optional
-from flask import (
-	Flask,
-	flash,
-	redirect,
-	render_template,
-	request,
-	session,
-	send_file,
-	abort
-)
+from flask import Flask, flash, redirect, render_template, request, session, send_file, abort
 from flask.sessions import SessionMixin
 from flask_cors import CORS
 import os
-from .models import Base, NoteModel, UserModel, engine, SessionLocal
+from models import Base, NoteModel, UserModel, engine, SessionLocal
 
 app = Flask(__name__,
 	template_folder=os.path.join('.', 'static', 'html')
 )
+
+db_session = SessionLocal()
 # CORS(app)
 # app.session = db_session
 # #app.secret_key = 'ac57e30483a72802d4ae83f7b4d889e6b9f3abae7a62b233fb6bd74657510eb6a1cf997a5f127ba976dc2be791f1d598b30c4ab9bd3aa3bcda92ae268d386aaf5ca3004b02ac4bf1255a730652bbc30b62c1cbd518b9c4ade7b48863b85f8c532b36acc3ebf22ffe971ca0eecbdebd7f34ab35f4443d5d92ce2984f37f4d5862'
