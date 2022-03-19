@@ -2,12 +2,25 @@ from typing import Optional
 from flask import Flask, flash, redirect, render_template, request, session, send_file, abort
 from flask.sessions import SessionMixin
 from flask_cors import CORS
-import os
+import os, sys
 from models import Base, NoteModel, UserModel, engine, SessionLocal
 
 app = Flask(__name__,
 	template_folder=os.path.join('.', 'static', 'html')
 )
+
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
+
+DB_URI_ENV_KEY = 'DATABASE_URL'
+print('Before DB_URI')
+SQLALCHEMY_DB_URI = os.environ[DB_URI_ENV_KEY] if DB_URI_ENV_KEY in os.environ else open('db_uri.txt', 'r').read()
+print('DB URI:', SQLALCHEMY_DB_URI, file=sys.stderr)
+
+engine = create_engine(
+	SQLALCHEMY_DB_URI, connect_args={'check_same_thread': False}
+)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 db_session = SessionLocal()
 # CORS(app)
