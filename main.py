@@ -54,7 +54,8 @@ def text_endpoint():
 
 @app.get('/')
 def index():
-	return redirect('/login')
+	return {'Page': '/login'}
+	# return redirect('/login')
 
 @app.get('/login')
 def login():
