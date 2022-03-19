@@ -11,6 +11,7 @@ from exceptions import InvalidDataException
 DB_URI_ENV_KEY = 'DATABASE_URL'
 
 SQLALCHEMY_DB_URI = os.environ[DB_URI_ENV_KEY] if DB_URI_ENV_KEY in os.environ else open('db_uri.txt', 'r').read()
+print('DB URI:', SQLALCHEMY_DB_URI)
 
 engine = create_engine(
 	SQLALCHEMY_DB_URI, connect_args={'check_same_thread': False}
