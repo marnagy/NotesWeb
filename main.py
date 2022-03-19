@@ -20,7 +20,7 @@ app = Flask(__name__,
 CORS(app)
 app.session = db_session
 app.secret_key = 'ac57e30483a72802d4ae83f7b4d889e6b9f3abae7a62b233fb6bd74657510eb6a1cf997a5f127ba976dc2be791f1d598b30c4ab9bd3aa3bcda92ae268d386aaf5ca3004b02ac4bf1255a730652bbc30b62c1cbd518b9c4ade7b48863b85f8c532b36acc3ebf22ffe971ca0eecbdebd7f34ab35f4443d5d92ce2984f37f4d5862'
-#Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 print('DB created')
 
 LOGGED_IN_KEY = 'logged_in'
@@ -29,12 +29,12 @@ USERMODEL_ID_KEY = 'user'
 def logged_in_test(session: SessionMixin) -> bool:
 	return LOGGED_IN_KEY in session and session[LOGGED_IN_KEY]
 
-@app.before_first_request
-def before_first():
-	try:
-		Base.metadata.create_all(bind=engine)
-	except: # DB already created
-		pass
+# @app.before_first_request
+# def before_first():
+# 	try:
+# 		Base.metadata.create_all(bind=engine)
+# 	except: # DB already created
+# 		pass
 
 # return static files
 @app.get('/static/<dir_name>/<file_name>')
