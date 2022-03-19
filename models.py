@@ -1,12 +1,11 @@
 from typing import Any
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text, create_engine, Date
-import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session, relationship
 from bcrypt import gensalt, hashpw, checkpw
-import os, sys
 from datetime import date, datetime
 from exceptions import InvalidDataException
+import os, sys
 
 DB_URI_ENV_KEY = 'DATABASE_URL'
 print('Before DB_URI')
@@ -17,7 +16,7 @@ engine = create_engine(
 	SQLALCHEMY_DB_URI, connect_args={'check_same_thread': False}
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-db_session = scoped_session(SessionLocal)
+# db_session = scoped_session(SessionLocal)
 
 Base = declarative_base()
 #Base.query = db_session.query_property()
