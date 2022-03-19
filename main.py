@@ -88,7 +88,7 @@ def register():
 	password = request.form['password']
 
 	user: Optional[UserModel] = db_session.query(UserModel).filter(UserModel.username == username).first()
-	if user:
+	if user is not None:
 		flash('Username already exists')
 		return redirect('/register')
 	
