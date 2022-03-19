@@ -12,7 +12,7 @@ from flask import (
 from flask.sessions import SessionMixin
 from flask_cors import CORS
 import os
-#from models import Base, NoteModel, UserModel, engine, db_session
+from .models import Base, NoteModel, UserModel, engine, db_session
 
 app = Flask(__name__,
 	template_folder=os.path.join('.', 'static', 'html')
