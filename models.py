@@ -9,7 +9,7 @@ from datetime import date, datetime
 from exceptions import InvalidDataException
 
 DB_URI_ENV_KEY = 'DATABASE_URL'
-
+print('Before DB_URI')
 SQLALCHEMY_DB_URI = os.environ[DB_URI_ENV_KEY] if DB_URI_ENV_KEY in os.environ else open('db_uri.txt', 'r').read()
 print('DB URI:', SQLALCHEMY_DB_URI, file=sys.stderr)
 
