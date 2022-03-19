@@ -3,27 +3,13 @@ from flask import Flask, flash, redirect, render_template, request, session, sen
 from flask.sessions import SessionMixin
 from flask_cors import CORS
 import os, sys
-from models import NoteModel, UserModel #, Base, engine, SessionLocal
+from models import NoteModel, UserModel, Base, engine, db_session
 
 app = Flask(__name__,
 	template_folder=os.path.join('.', 'static', 'html')
 )
 
-from sqlalchemy.orm import sessionmaker, scoped_session
-from sqlalchemy import create_engine
 
-DB_URI_ENV_KEY = 'DATABASE_URL'
-print('Before DB_URI')
-#BACKEND_DB_URI = 'postgresql://avkgsaykdnajdk:4fbb7f1c99c034b70b5146e144a0223c378f556a97ee10e378ad3e12e08bd40c@ec2-34-242-89-204.eu-west-1.compute.amazonaws.com:5432/d6ba3garpp3t6t'
-SQLALCHEMY_DB_URI = os.environ.get(DB_URI_ENV_KEY).replace('postgres', 'postgresql') if DB_URI_ENV_KEY in os.environ else open('db_uri.txt', 'r').read()
-print('DB URI:', SQLALCHEMY_DB_URI, file=sys.stderr)
-
-engine = create_engine(
-	SQLALCHEMY_DB_URI, connect_args={'check_same_thread': False}
-)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-db_session = scoped_session(SessionLocal)
 # CORS(app)
 # app.session = db_session
 # #app.secret_key = 'ac57e30483a72802d4ae83f7b4d889e6b9f3abae7a62b233fb6bd74657510eb6a1cf997a5f127ba976dc2be791f1d598b30c4ab9bd3aa3bcda92ae268d386aaf5ca3004b02ac4bf1255a730652bbc30b62c1cbd518b9c4ade7b48863b85f8c532b36acc3ebf22ffe971ca0eecbdebd7f34ab35f4443d5d92ce2984f37f4d5862'
@@ -61,8 +47,7 @@ def text_endpoint():
 
 @app.get('/')
 def index():
-	return {'Page': '/login'}
-	# return redirect('/login')
+	return redirect('/login')
 
 @app.get('/login')
 def login():
