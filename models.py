@@ -4,11 +4,13 @@ import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session, relationship
 from bcrypt import gensalt, hashpw, checkpw
-import uuid
+import os
 from datetime import date, datetime
 from exceptions import InvalidDataException
 
-SQLALCHEMY_DB_URI = open('db_uri.txt', 'r').read()
+DB_URI_ENV_KEY = 'DATABASE_URL'
+
+SQLALCHEMY_DB_URI = os.environ[DB_URI_ENV_KEY] if DB_URI_ENV_KEY in os.environ else open('db_uri.txt', 'r').read()
 
 engine = create_engine(
 	SQLALCHEMY_DB_URI, connect_args={'check_same_thread': False}
