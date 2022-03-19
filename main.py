@@ -3,7 +3,7 @@ from flask import Flask, flash, redirect, render_template, request, session, sen
 from flask.sessions import SessionMixin
 from flask_cors import CORS
 import os, sys
-from models import Base, NoteModel, UserModel, engine, SessionLocal
+from models import NoteModel, UserModel #, Base, engine, SessionLocal
 
 app = Flask(__name__,
 	template_folder=os.path.join('.', 'static', 'html')
