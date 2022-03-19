@@ -14,7 +14,8 @@ from sqlalchemy import create_engine
 
 DB_URI_ENV_KEY = 'DATABASE_URL'
 print('Before DB_URI')
-SQLALCHEMY_DB_URI = os.environ.get(DB_URI_ENV_KEY) if DB_URI_ENV_KEY in os.environ else open('db_uri.txt', 'r').read()
+#BACKEND_DB_URI = 'postgresql://avkgsaykdnajdk:4fbb7f1c99c034b70b5146e144a0223c378f556a97ee10e378ad3e12e08bd40c@ec2-34-242-89-204.eu-west-1.compute.amazonaws.com:5432/d6ba3garpp3t6t'
+SQLALCHEMY_DB_URI = os.environ.get(DB_URI_ENV_KEY).replace('postgres', 'postgresql') if DB_URI_ENV_KEY in os.environ else open('db_uri.txt', 'r').read()
 print('DB URI:', SQLALCHEMY_DB_URI, file=sys.stderr)
 
 engine = create_engine(
